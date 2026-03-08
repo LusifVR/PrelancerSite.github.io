@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>INVICTUS</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+
+header {
+  position: relative; /* keep content on top */
+  padding: 90px 10%;
+  border-bottom: 1px solid rgba(100,180,255,.2);
+  background-color: #020814; /* same as body or a slightly darker shade */
+  z-index: 1; /* above body::before grid */
+}
+
+*{
+font-family:'Rajdhani', sans-serif;    
+box-sizing:border-box;
+margin:0;
+padding:0;
+}
+
+body{
+font-family:'Rajdhani', sans-serif;
+font-size:16px;
+background:#020814;
+color:#d9f4ff;
+overflow-x:hidden;
+}
+
+/* SCROLLING GRID */
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background:
+    linear-gradient(rgba(40,120,255,.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(40,120,255,.08) 1px, transparent 1px);
+  background-size: 40px 40px;
+  animation: gridMove 18s linear infinite;
+  z-index: -2;
+}
+
+@keyframes gridMove {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(40px, 40px); }
+}
+
+body::after {
+  background-image:
+    linear-gradient(rgba(60,200,255,0.2) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(60,200,255,0.2) 1px, transparent 1px);
+  animation: flashGrid 2s infinite;
+}
+
+body::before-flash {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(100,255,200,0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(100,255,200,0.1) 1px, transparent 1px);
+  background-size: 40px 40px;
+  animation: flashGrid 3.5s infinite alternate;
+  z-index: -1.5;
+}
+
+@keyframes flashGrid {
+  0%, 100% { opacity: 0.05; } 
+  25% { opacity: 0.2; } 
+  50% { opacity: 0.05; }
+  75% { opacity: 0.15; }
+}
+
+/* HEADER */
+
+header{
+padding:90px 10%;
+border-bottom:1px solid rgba(100,180,255,.2);
+}
+
+h1{
+font-family:'Rajdhani', sans-serif;
+font-size:64px;
+letter-spacing:4px;
+color:#7bd7ff;
+}
+
+.tagline{
+margin-top:10px;
+font-size:18px;
+color:#8fbcd6;
+max-width:650px;
+}
+
+/* SECTIONS */
+
+section{
+padding:20px 10%;
+max-width:2000px;
+margin:auto;
+}
+
+h2{
+font-family:'Rajdhani', sans-serif;
+font-size:30px;
+margin-bottom:25px;
+color:#7bd7ff;
+}
+
+/* PANELS */
+
+.panel{
+background:rgba(15,30,55,.55);
+border:1px solid rgba(120,200,255,.15);
+backdrop-filter:blur(8px);
+padding:35px;
+border-radius:10px;
+}
+
+/* GRID */
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:25px;
+}
+
+/* MODE CARDS */
+
+.mode{
+padding:22px;
+border:1px solid rgba(120,200,255,.15);
+border-radius:8px;
+background:rgba(8,20,40,.6);
+transition:.2s;
+}
+
+.mode:hover{
+border-color:#6fd0ff;
+transform:translateY(-4px);
+box-shadow:0 10px 25px rgba(0,150,255,.15);
+}
+
+.mode h3{
+font-size:20px;
+margin-bottom:10px;
+color:#c5f2ff;
+}
+
+/* BADGES */
+
+.badge{
+display:inline-block;
+font-size:11px;
+padding:2px 5px;
+margin-left:8px;
+border-radius:4px;
+border:1px solid rgba(120,200,255,.25);
+}
+
+.early{
+background:#123e33;
+color:#6fffd2;
+border-color:#1e8f73;
+}
+
+.coming{
+background:#1a3d5c;
+color:#7ed7ff;
+}
+
+/* TEXT */
+
+.mode p{
+font-size:14px;
+line-height:1.5;
+color:#a6c8db;
+}
+
+p{
+line-height:1.6;
+max-width:800px;
+color:#a8c4d6;
+}
+
+ul{
+margin-top:15px;
+padding-left:18px;
+}
+
+li{
+margin-bottom:6px;
+}
+
+/* FOOTER */
+
+footer{
+padding:40px 10%;
+border-top:1px solid rgba(120,200,255,.15);
+color:#6a90a8;
+font-size:13px;
+text-align:center;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<h1>INVICTUS</h1>
+<p class="tagline">
+A tactical VR Milsim platform built on unit cohesion and combined arms gameplay. Deploy with your squad and fight through dynamic combat scenarios.
+</p>
+
+</header>
+
+<section>
+
+<h2>Overview</h2>
+
+<div class="grid">
+
+<p>
+<strong>Invictus</strong> is a VR <strong>Milsim</strong> platform built around cooperative gameplay, realism, and strategic combat. The experience combines immersive VR weapon handling with advanced simulated systems and interactive environments.
+
+Players deploy into combat scenarios ranging from full-scale operations to small-team raids to training environments, each contributing to the overall progression system.
+</p>
+
+</div>
+
+</section>
+
+<section>
+
+<h2>Game Modes</h2>
+
+<div class="grid">
+
+<div class="mode">
+<h3>Expedition <span class="badge early">EARLY ACCESS</span></h3>
+<p>
+The primary online experience. Expedition focuses on cooperative operations against hostile forces within an ongoing campaign.
+There are multiple modes for the Expedition experience, but all focus around the collective campaign.
+</p>
+</div>
+
+<div class="mode">
+<h3>Sandbox <span class="badge early">EARLY ACCESS</span></h3>
+<p>
+An open environment with developer-style tools. Spawn units, experiment with systems, and explore gameplay mechanics freely.
+Complete with multiple tutorial and trial-run events to expand your skillset and knowledge.
+</p>
+</div>
+
+<div class="mode">
+<h3>Holdout <span class="badge early">EARLY ACCESS</span></h3>
+<p>
+A wave survival mode where players defend against organized enemy forces in escalating combat scenarios. Progression
+and enemy wave intensity increases as players progress.
+Squad up and hold out as long as possible.
+</p>
+</div>
+
+<div class="mode">
+<h3>Zulu Hour <span class="badge coming">COMING SOON</span></h3>
+<p>
+Deploy into abandoned, but contested territory to gather high-value intel. Explore collapsed regions, gather supplies,
+complete objectives, and extract before the one-hour window closes.
+</p>
+</div>
+
+<div class="mode">
+<h3>Tasking <span class="badge coming">COMING SOON</span></h3>
+<p>
+Short tactical missions playable solo or cooperatively that support the wider war effort. Smaller-scale operations intended
+for players looking to have the milsim experience at a shorter timeframe at an off-pace mode.
+</p>
+</div>
+
+</div>
+
+</section>
+
+<section>
+
+<h2>Economy & Equipment</h2>
+
+<div class="panel">
+
+<p>
+Invictus features a persistent equipment economy tied to mission performance. Completing operations, multiplayer missions, and deployments rewards players with operational funds.
+You are awarded cash to spend on your personal kit and attachments, while Supply Points are used for cooperative efforts such as deploying vehicles, building or repairing structures, and more.
+</p>
+
+<br>
+
+<p>
+These funds can be used to purchase equipment from the armory, including:
+</p>
+
+<ul>
+<li>Weapons</li>
+<li>Attachments</li>
+<li>Plate carriers</li>
+<li>Tactical gear</li>
+<li>Operational equipment</li>
+</ul>
+
+<br>
+
+<p>
+The primary multiplayer mode, <strong>Expedition</strong>, uses faction-restricted loadouts to maintain authenticity and balance between forces. Other modes allow broader equipment freedom for experimentation and custom loadouts.
+</p>
+
+</div>
+
+</section>
+
+<footer>
+INVICTUS • VR MILSIM Platform
+</footer>
+
+</body>
+</html>
