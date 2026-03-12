@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -9,22 +8,6 @@
 
 <style>
 
-header{
-  position: relative;
-  padding:120px 10%;
-  border-bottom:1px solid rgba(100,180,255,.2);
-
-  background:
-    linear-gradient(rgba(2,8,20,.85), rgba(2,8,20,.95)),
-    url("https://www.prelancerstudios.com/server_images/invictus/libraryhero.png");
-
-  background-size:cover;
-  background-position:center;
-  background-repeat:no-repeat;
-
-  z-index:1;
-}
-
 *{
 font-family:'Rajdhani', sans-serif;    
 box-sizing:border-box;
@@ -33,63 +16,30 @@ padding:0;
 }
 
 body{
-font-family:'Rajdhani', sans-serif;
 font-size:16px;
 background:#020814;
 color:#d9f4ff;
 overflow-x:hidden;
 }
 
-/* SCROLLING GRID */
-
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background:
-    linear-gradient(rgba(40,120,255,.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(40,120,255,.08) 1px, transparent 1px);
-  background-size: 40px 40px;
-  animation: gridMove 18s linear infinite;
-  z-index: -2;
-}
-
-@keyframes gridMove {
-  0% { transform: translate(0, 0); }
-  100% { transform: translate(40px, 40px); }
-}
-
-body::after {
-  background-image:
-    linear-gradient(rgba(60,200,255,0.2) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(60,200,255,0.2) 1px, transparent 1px);
-  animation: flashGrid 2s infinite;
-}
-
-body::before-flash {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(100,255,200,0.1) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(100,255,200,0.1) 1px, transparent 1px);
-  background-size: 40px 40px;
-  animation: flashGrid 3.5s infinite alternate;
-  z-index: -1.5;
-}
-
-@keyframes flashGrid {
-  0%, 100% { opacity: 0.05; } 
-  25% { opacity: 0.2; } 
-  50% { opacity: 0.05; }
-  75% { opacity: 0.15; }
-}
-
 /* HEADER */
 
+header{
+position:relative;
+padding:120px 10%;
+border-bottom:1px solid rgba(100,180,255,.2);
+
+background:
+linear-gradient(rgba(2,8,20,.85), rgba(2,8,20,.95)),
+url("https://www.prelancerstudios.com/server_images/invictus/libraryhero.png");
+
+background-size:cover;
+background-position:center;
+background-repeat:no-repeat;
+z-index:1;
+}
 
 h1{
-font-family:'Rajdhani', sans-serif;
 font-size:64px;
 letter-spacing:4px;
 color:#7bd7ff;
@@ -102,6 +52,32 @@ color:#8fbcd6;
 max-width:650px;
 }
 
+/* SCROLLING GRID */
+
+body::before{
+content:"";
+position:fixed;
+inset:0;
+background:
+linear-gradient(rgba(40,120,255,.08) 1px, transparent 1px),
+linear-gradient(90deg, rgba(40,120,255,.08) 1px, transparent 1px);
+background-size:40px 40px;
+animation:gridMove 18s linear infinite;
+z-index:-2;
+}
+
+@keyframes gridMove{
+0%{transform:translate(0,0);}
+100%{transform:translate(40px,40px);}
+}
+
+@keyframes flashGrid{
+0%,100%{opacity:.05;}
+25%{opacity:.2;}
+50%{opacity:.05;}
+75%{opacity:.15;}
+}
+
 /* SECTIONS */
 
 section{
@@ -111,10 +87,54 @@ margin:auto;
 }
 
 h2{
-font-family:'Rajdhani', sans-serif;
 font-size:30px;
 margin-bottom:25px;
 color:#7bd7ff;
+}
+
+/* OVERVIEW LAYOUT */
+
+.overview-layout{
+display:grid;
+grid-template-columns:1.2fr 1fr;
+gap:35px;
+align-items:start;
+}
+
+.overview-video{
+display:flex;
+flex-direction:column;
+gap:15px;
+}
+
+/* VIDEO */
+
+.video-frame{
+position:relative;
+padding-top:56.25%;
+border:1px solid rgba(120,200,255,.25);
+border-radius:8px;
+overflow:hidden;
+background:black;
+}
+
+.video-frame iframe{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+border:0;
+}
+
+.video-panel{
+background:rgba(8,20,40,.75);
+border:1px solid rgba(120,200,255,.15);
+border-radius:8px;
+padding:18px;
+font-size:14px;
+line-height:1.5;
+color:#a6c8db;
 }
 
 /* PANELS */
@@ -212,8 +232,17 @@ font-size:13px;
 text-align:center;
 }
 
-</style>
+/* MOBILE */
 
+@media (max-width:900px){
+
+.overview-layout{
+grid-template-columns:1fr;
+}
+
+}
+
+</style>
 </head>
 
 <body>
@@ -231,13 +260,43 @@ A tactical VR Milsim platform built on unit cohesion and combined arms gameplay.
 
 <h2>Overview</h2>
 
-<div class="grid">
+<div class="overview-layout">
+
+<div>
 
 <p>
 <strong>Invictus</strong> is a VR <strong>Milsim</strong> platform built around cooperative gameplay, realism, and strategic combat. The experience combines immersive VR weapon handling with advanced simulated systems and interactive environments.
+</p>
 
+<br>
+
+<p>
 Players deploy into combat scenarios ranging from full-scale operations to small-team raids to training environments, each contributing to the overall progression system.
 </p>
+
+</div>
+
+<div class="overview-video">
+
+<div class="video-frame">
+<iframe src="https://www.youtube.com/watch?v=At4mv0u7x-M"
+title="Invictus VR"
+allowfullscreen></iframe>
+</div>
+
+</div>
+
+</div>
+
+<div class="video-panel" style="margin-top:25px;">
+
+<strong>Community Driven Development</strong><br><br>
+
+Invictus began as a grassroots initiative within the VR community, formed by players and developers who shared a vision for a deeper and more immersive military simulation experience. Built upon the foundations of existing VR platforms and community innovation, the project aims to push the boundaries of cooperative virtual reality combat.
+
+<br><br>
+
+Through collaboration and feedback from the VR milsim community, Invictus is evolving into a next-generation virtual reality combat platform shaped directly by its players.
 
 </div>
 
@@ -253,7 +312,6 @@ Players deploy into combat scenarios ranging from full-scale operations to small
 <h3>Expedition <span class="badge early">EARLY ACCESS</span></h3>
 <p>
 The primary online experience. Expedition focuses on cooperative operations against hostile forces within an ongoing campaign.
-There are multiple modes for the Expedition experience, but all focus around the collective campaign.
 </p>
 </div>
 
@@ -261,32 +319,27 @@ There are multiple modes for the Expedition experience, but all focus around the
 <h3>Sandbox <span class="badge early">EARLY ACCESS</span></h3>
 <p>
 An open environment with developer-style tools. Spawn units, experiment with systems, and explore gameplay mechanics freely.
-Complete with multiple tutorial and trial-run events to expand your skillset and knowledge.
 </p>
 </div>
 
 <div class="mode">
 <h3>Holdout <span class="badge early">EARLY ACCESS</span></h3>
 <p>
-A wave survival mode where players defend against organized enemy forces in escalating combat scenarios. Progression
-and enemy wave intensity increases as players progress.
-Squad up and hold out as long as possible.
+A wave survival mode where players defend against organized enemy forces in escalating combat scenarios.
 </p>
 </div>
 
 <div class="mode">
 <h3>Zulu Hour <span class="badge coming">COMING SOON</span></h3>
 <p>
-Deploy into abandoned, but contested territory to gather high-value intel. Explore collapsed regions, gather supplies,
-complete objectives, and extract before the one-hour window closes.
+Deploy into abandoned territory to gather high-value intel and extract before the one-hour window closes.
 </p>
 </div>
 
 <div class="mode">
 <h3>Tasking <span class="badge coming">COMING SOON</span></h3>
 <p>
-Short tactical missions playable solo or cooperatively that support the wider war effort. Smaller-scale operations intended
-for players looking to have the milsim experience at a shorter timeframe at an off-pace mode.
+Short tactical missions playable solo or cooperatively that support the wider war effort.
 </p>
 </div>
 
@@ -301,15 +354,10 @@ for players looking to have the milsim experience at a shorter timeframe at an o
 <div class="panel">
 
 <p>
-Invictus features a persistent equipment economy tied to mission performance. Completing operations, multiplayer missions, and deployments rewards players with operational funds.
-You are awarded cash to spend on your personal kit and attachments, while Supply Points are used for cooperative efforts such as deploying vehicles, building or repairing structures, and more.
+Invictus features a persistent equipment economy tied to mission performance. Completing operations rewards players with operational funds used to purchase equipment from the armory.
 </p>
 
 <br>
-
-<p>
-These funds can be used to purchase equipment from the armory, including:
-</p>
 
 <ul>
 <li>Weapons</li>
@@ -322,7 +370,7 @@ These funds can be used to purchase equipment from the armory, including:
 <br>
 
 <p>
-The primary multiplayer mode, <strong>Expedition</strong>, uses faction-restricted loadouts to maintain authenticity and balance between forces. Other modes allow broader equipment freedom for experimentation and custom loadouts.
+The primary multiplayer mode, <strong>Expedition</strong>, uses faction-restricted loadouts to maintain authenticity and balance between forces.
 </p>
 
 </div>
