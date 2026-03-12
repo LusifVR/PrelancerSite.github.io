@@ -177,6 +177,65 @@ margin-bottom:10px;
 color:#c5f2ff;
 }
 
+/* SYSTEM CARDS */
+
+.system-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:25px;
+}
+
+.system{
+position:relative;
+padding:30px;
+border:1px solid rgba(120,200,255,.15);
+border-radius:10px;
+background:rgba(8,20,40,.65);
+overflow:hidden;
+transition:.25s;
+min-height:120px;
+}
+
+.system:hover{
+border-color:#6fd0ff;
+transform:translateY(-4px);
+box-shadow:0 10px 25px rgba(0,150,255,.15);
+}
+
+.system h3{
+font-size:22px;
+color:#c5f2ff;
+}
+
+/* hidden info */
+
+.system-info{
+opacity:0;
+max-height:0;
+overflow:hidden;
+transition:all .35s ease;
+margin-top:10px;
+color:#a6c8db;
+font-size:14px;
+line-height:1.5;
+}
+
+.system:hover .system-info{
+opacity:1;
+max-height:600px;
+}
+
+/* mobile shit because phones are wack */
+
+@media (max-width:900px){
+
+.system-info{
+opacity:1;
+max-height:none;
+}
+
+}
+
 /* BADGES */
 
 .badge{
@@ -341,16 +400,38 @@ Short tactical missions playable solo or cooperatively that support the wider wa
 
 <section>
 
-<h2>Economy & Equipment</h2>
-
-<div class="panel">
-
-<p>
-Invictus features a persistent equipment economy tied to mission performance. Completing operations rewards players with operational funds used to purchase equipment from the armory.
-</p>
-
+<h2>Core Systems</h2>
+<h3>Hover to learn more</h3>
 <br>
+<div class="system-grid">
 
+<!-- DENS Card -->
+<div class="system">
+<h3>Dynamic Environment Simulation (DENS)</h3>
+<div class="system-info">
+<p>
+Invictus uses an in-house physics system known as <strong>Dynamic Environment Simulation</strong> (DENS). This system governs how the battlefield physically reacts to combat.
+</p>
+<ul>
+<li><strong>Destructible Structures</strong> – Buildings fracture and collapse under sustained fire or explosives.</li>
+<li><strong>Material-Based Surfaces</strong> – Wood splinters, concrete cracks, metal deforms, and glass shatters.</li>
+<li><strong>Ballistic Interaction</strong> – Realistic penetration, ricochet, and deflection.</li>
+<li><strong>Dynamic Cover</strong> – Defensive positions degrade during firefights.</li>
+<li><strong>Environmental Debris</strong> – Destruction alters movement and sightlines.</li>
+</ul>
+<p>
+DENS transforms static maps into evolving battlefields shaped by player actions.
+</p>
+</div>
+</div>
+
+<!-- Economy Card -->
+<div class="system">
+<h3>Economy & Equipment</h3>
+<div class="system-info">
+<p>
+Invictus features a persistent equipment economy tied to mission performance.
+</p>
 <ul>
 <li>Weapons</li>
 <li>Attachments</li>
@@ -358,15 +439,53 @@ Invictus features a persistent equipment economy tied to mission performance. Co
 <li>Tactical gear</li>
 <li>Operational equipment</li>
 </ul>
-
-<br>
-
 <p>
-The primary multiplayer mode, <strong>Expedition</strong>, uses faction-restricted loadouts to maintain authenticity and balance between forces.
+Completing operations rewards players with operational funds used to purchase gear from the armory.
 </p>
-
+<p>
+<strong>Expedition</strong> mode uses faction-restricted loadouts to maintain authenticity and balance.
+</p>
+</div>
 </div>
 
+<!-- Vehicles Card -->
+<div class="system">
+<h3>Vehicles</h3>
+<div class="system-info">
+<p>
+Players can operate a wide range of vehicles across land, sea, and air, integrating full mobility into combat scenarios.
+</p>
+<ul>
+<li><strong>Aircraft</strong> – Pilots can control helicopters and planes for transport, reconnaissance, or combat support.</li>
+<li><strong>Boats</strong> – Navigate rivers, lakes, or coastal areas with fully drivable boats, enabling amphibious assaults.</li>
+<li><strong>Tanks & Armored Vehicles</strong> – Drive tanks and APCs with authentic physics and damage models, supporting heavy frontline operations.</li>
+</ul>
+<p>
+Vehicles interact seamlessly with DENS, allowing environmental destruction and realistic ballistics while moving.
+</p>
+</div>
+</div>
+
+<!-- Intelligent AI Card -->
+<div class="system">
+<h3>Intelligent AI System</h3>
+<div class="system-info">
+<p>
+Invictus features an adaptive AI system that responds dynamically to player actions, creating challenging and unpredictable combat scenarios.
+</p>
+<ul>
+<li><strong>Tactical Adaptation</strong> – AI units can flank, regroup, and plan new attack routes when encountering resistance.</li>
+<li><strong>Strategic Planning</strong> – Enemy AI can sabotage the environment, such as destroying bridges, blocking passages, or setting ambushes.</li>
+<li><strong>Behavioral Realism</strong> – AI reacts to player presence and terrain, using cover intelligently and coordinating assaults with other units.</li>
+<li><strong>Persistent Threat</strong> – AI remembers previous encounters and adapts over time, forcing players to vary tactics.</li>
+</ul>
+<p>
+This intelligent system turns every engagement into a dynamic puzzle rather than predictable combat.
+</p>
+</div>
+</div>
+
+</div>
 </section>
 
 <footer>
