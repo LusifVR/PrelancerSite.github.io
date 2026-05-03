@@ -3,124 +3,152 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Prelancer Studios</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+
 <style>
-/* --- Base Reset --- */
+/* --- Reset --- */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* --- CRT Background --- */
+/* --- Background Grid --- */
 body {
-    background: #0a0a0a;
-    color: #00ff9c;
-    font-family: "Courier New", Courier, monospace;
+    font-family: 'Inter', sans-serif;
+    color: #e6f1ff;
     height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     overflow: hidden;
-    position: relative;
+    background: #05070d;
 }
 
-/* --- Scanlines Overlay --- */
+/* Animated grid */
 body::before {
     content: "";
     position: absolute;
-    width: 100%;
-    height: 100%;
-    background: repeating-linear-gradient(
-        to bottom,
-        rgba(0, 255, 156, 0.05),
-        rgba(0, 255, 156, 0.05) 1px,
-        transparent 1px,
-        transparent 3px
-    );
-    pointer-events: none;
+    width: 200%;
+    height: 200%;
+    background-image:
+        linear-gradient(rgba(0, 255, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(to right, rgba(0, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 60px 60px;
+    animation: moveGrid 20s linear infinite;
+}
+
+@keyframes moveGrid {
+    from { transform: translate(0, 0); }
+    to { transform: translate(-60px, -60px); }
+}
+
+/* --- Center Container --- */
+.container {
+    position: relative;
     z-index: 2;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-/* --- Subtle Flicker Animation --- */
-@keyframes flicker {
-    0% { opacity: 0.97; }
-    50% { opacity: 1; }
-    100% { opacity: 0.98; }
-}
-
-.vcr-screen {
+/* --- Glass Panel --- */
+.panel {
+    backdrop-filter: blur(20px);
+    background: rgba(10, 15, 25, 0.7);
+    border: 1px solid rgba(0, 255, 255, 0.15);
+    padding: 60px;
     text-align: center;
-    padding: 60px 80px;
-    border: 2px solid #00ff9c;
-    box-shadow:
-        0 0 10px #00ff9c,
-        0 0 30px rgba(0, 255, 156, 0.3),
-        inset 0 0 20px rgba(0, 255, 156, 0.2);
-    background: rgba(0, 0, 0, 0.85);
-    animation: flicker 2s infinite;
-    z-index: 1;
+    border-radius: 16px;
+    box-shadow: 0 0 40px rgba(0, 255, 255, 0.08);
+    max-width: 700px;
 }
 
-/* --- Title Styling --- */
+/* --- Title --- */
 h1 {
-    font-size: 2.5rem;
-    letter-spacing: 4px;
-    margin-bottom: 20px;
-    text-shadow: 0 0 8px #00ff9c;
-}
-
-/* --- Subtitle Text --- */
-.tagline {
-    font-size: 1.2rem;
+    font-size: 2.8rem;
+    font-weight: 700;
+    letter-spacing: 2px;
     margin-bottom: 15px;
 }
 
-.subtext {
+/* --- Tagline --- */
+.tagline {
+    font-size: 1.2rem;
+    color: #00e0ff;
+    margin-bottom: 20px;
+}
+
+/* --- Description --- */
+.desc {
     font-size: 1rem;
-    margin-bottom: 35px;
+    line-height: 1.6;
     opacity: 0.8;
+    margin-bottom: 40px;
 }
 
-/* --- Contact Button --- */
-.contact-btn {
-    display: inline-block;
-    padding: 10px 30px;
-    border: 2px solid #00ff9c;
-    color: #00ff9c;
+/* --- Nav Buttons --- */
+.nav {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.nav a {
+    padding: 10px 20px;
+    border: 1px solid rgba(0, 255, 255, 0.3);
+    border-radius: 8px;
     text-decoration: none;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    transition: 0.3s ease;
-}
-
-.contact-btn:hover {
-    background: #00ff9c;
-    color: #000;
-    box-shadow: 0 0 15px #00ff9c;
-}
-
-/* --- VCR Timestamp --- */
-.timestamp {
-    position: absolute;
-    top: 20px;
-    left: 20px;
+    color: #e6f1ff;
+    transition: 0.25s ease;
     font-size: 0.9rem;
-    opacity: 0.7;
+}
+
+.nav a:hover {
+    background: rgba(0, 255, 255, 0.1);
+    border-color: #00e0ff;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+}
+
+/* --- Footer Note --- */
+.footer {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+    font-size: 0.8rem;
+    opacity: 0.5;
 }
 </style>
 </head>
 
 <body>
 
-<div class="timestamp">PLAY ▷ 00:00:01</div>
+<div class="container">
+    <div class="panel">
+        <h1>Prelancer Studios</h1>
 
-<div class="vcr-screen">
-    <h1>PRELANCER STUDIOS</h1>
-    <div class="tagline">Making games the rad way.</div>
-    <div class="subtext">Check back soon</div>
-    <a class="contact-btn" href="mailto:contact@prelancerstudios.com">Contact</a>
+        <div class="tagline">Making games the rad way.</div>
+
+        <div class="desc">
+            Prelancer Studios is an indie team driven by creativity and innovation.
+            <br>
+            We build games. We build experiences. We build fun.
+        </div>
+
+        <div class="nav">
+            <a href="#">Projects</a>
+            <a href="#">About</a>
+            <a href="#">Careers</a>
+            <a href="mailto:contact@prelancerstudios.com">Contact</a>
+        </div>
+    </div>
+</div>
+
+<div class="footer">
+    © 2026 Prelancer Studios
 </div>
 
 </body>
